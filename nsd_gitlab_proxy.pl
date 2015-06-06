@@ -88,11 +88,12 @@ while (my $connection = $d->accept) {
     }
     
     print $connection $data;
+    
+    if (!$data) {
+      $connection->close();
+      undef($connection);
+    }
   });
-
-  
-  $connection->close();
-  undef($connection);
 }
 
 1;
