@@ -31,37 +31,27 @@ $mech->stack_depth(0);
 $mech->add_handler("request_send", sub { shift->dump; return });
 $mech->add_handler("response_done", sub { shift->dump; return });
 
-$mech->get("https://owa.nsd.ru/CookieAuth.dll?GetLogon?curl=Z2FgitlabZ2F&reason=0&formdir=3");
-
-$mech->submit_form(
-  form_id => "logonForm",
-  fields => {
-    "username" => $nsd_user,
-    "password" => $nsd_password
-  }
-);
-
-my $mech_refresher = $mech->clone();
-
-use threads;
-
-threads->create(
-  sub { 
-    while(1) {
-      sleep(60);
-      print "Session refresh\n\n";
-      $mech_refresher->get("https://owa.nsd.ru/gitlab/"); 
-    }
-  }
-);
-
 use HTTP::Daemon;
 
 my $d = HTTP::Daemon->new(
   LocalPort => $port
 ) || die;
 
+
 while (my $connection = $d->accept) {
+  $mech->get("https://owa.nsd.ru/CookieAuth.dll?GetLogon?curl=Z2FgitlabZ2F&reason=0&formdir=3");
+
+  if ($mech->form_id("logonForm")) 
+  {
+    $mech->submit_form(
+      form_id => "logonForm",
+      fields => {
+        "username" => $nsd_user,
+        "password" => $nsd_password
+      }
+    );
+  }
+
   my $request = $connection->get_request();
     
   $request->uri->scheme("https");
