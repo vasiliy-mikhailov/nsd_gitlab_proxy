@@ -37,9 +37,7 @@ quit
  
  
 >git remote add origin http://owa.nsd.ru/gitlab/mikhailov/owa_test.git
-(сообщаем git где находится удаленный репозитарий. Обратите внимание – протокол HTTP, это важно. nsd_gitlab_proxy сам заменит http на https)
+(сообщаем git где находится удаленный репозиторий. Обратите внимание – протокол HTTP, это важно. nsd_gitlab_proxy сам заменит http на https)
  
 >git pull -u origin master
 (тянем к себе репозиторий)
-
-проверяем что репозиторий появился в папке
