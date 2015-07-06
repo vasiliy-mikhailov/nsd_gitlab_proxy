@@ -1,3 +1,5 @@
+#!/usr/bin/perl
+
 use strict;
 
 my $version = "2.1";
@@ -5,8 +7,8 @@ my $version = "2.1";
 if ($#ARGV < 2) {
   my $message = <<"END_MESSAGE";
   Usage: nsd_gitlab_proxy.pl nsd_user nsd_password port
-  git config --global http.proxy 127.0.0.1 <port>
-  git remote add origin http://owa.nsd.ru/gitlab/root/<your_repository>.git
+  git config --global http.http://owa.nsd.ru.proxy localhost:<port>
+  git remote add origin http://owa.nsd.ru/gitlab/<path_to>/<your_repository>.git
 END_MESSAGE
 
   die $message;
