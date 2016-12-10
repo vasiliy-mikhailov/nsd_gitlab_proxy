@@ -32,7 +32,7 @@
     - mkdir owa_test (создаем пустую папку)
     - cd owa_test (переходим в папку)
     - git init (инициализируем пустой репозиторий)
-    - git config --global http.http://owa.nsd.ru.proxy localhost:3128  
+    - git config --global http.proxy http://owa.nsd.ru.proxy localhost:3128  
         (данная команда сообщает git ходить к GitLab через локальный прокси поднятый на порту 3128 для всех репозиториев GitLab)
     - git remote add origin http://owa.nsd.ru/gitlab/mikhailov/owa_test.git  
         (сообщаем git где находится удаленный репозиторий. Обратите внимание – протокол HTTP, это важно. nsd_gitlab_proxy сам заменит http на https)
