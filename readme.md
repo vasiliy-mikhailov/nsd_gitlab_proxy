@@ -22,9 +22,9 @@
     - install HTTP::Daemon
     - quit
  
-3. Запустить утилиту: perl nsd_gitlab_proxy.pl доменный\_логин доменный\_пароль порт. Например:
+3. Запустить утилиту: perl nsd_gitlab_proxy.pl доменный\_логин доменный\_пароль порт. Например для пользователя mikhailov с паролем 12345 поднять прокси на порту 3128:
 
-    perl nsd_gitlab_proxy.pl mikhailov 12345 mikhailov 12345 3128
+    perl nsd_gitlab_proxy.pl mikhailov 12345 3128
  
 4. Утвердительно ответить, если Windows спросит предоставлять ли доступ утилите nsd_gitlab_proxy к сети
  
